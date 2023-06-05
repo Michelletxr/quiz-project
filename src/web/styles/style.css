@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: auto;
+  font-family: sora;
+  box-sizing: border-box;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #ffc09e;
+  background: #a9323e;
+}
+
+::selection {
+  color: #ffc09e;
+  background: #a9323e;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #fffbf9;
+}
+
+.header {
+  background-color: antiquewhite;
+  display: flex;
+  margin: auto;
+}
+
+.logo img {
+  height: 4rem;
+}
+
+.logo2 {
+  display: none;
+}
+
+.logo {
+  margin: auto;
+  margin-left: 4rem;
+  color: tomato;
+}
+
+.menu ul li a {
+  color: #1c1c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.menu ul li {
+  margin-left: 1rem;
+}
+
+.menu ul li a:hover {
+  color: #a9323e;
+  font-weight: 800;
+}
+
+.menu {
+  font-size: 1rem;
+  text-transform: uppercase;
+  display: flex;
+  margin: auto;
+  margin-right: 4rem;
+  height: 100px;
+  text-align: right;
+}
+
+.container {
+  display: flex;
+  height: 85%;
+}
+
+.frontpage {
+  align-items: center;
+  display: flex;
+  padding: 4rem;
+  margin: 0;
+}
+
+.fronttxt {
+  height: 50%;
+  margin: 0;
+  width: 50%;
+}
+
+.fronttxt h1 {
+  font-weight: 800;
+  color: #1c1c1c;
+  font-size: 3.5rem;
+  line-height: 120%;
+  margin-bottom: 1rem;
+}
+
+.fronttxt p {
+  font-size: 1.2rem;
+  color: rgba(28, 28, 28, 0.5);
+  margin-bottom: 3rem;
+}
+
+.frontimg {
+  overflow: hidden;
+  width: 50%;
+  z-index: -9999;
+  right: 0;
+  position: absolute;
+}
+
+.frontimg img {
+  height: 47vw;
+}
+
+.circle {
+  z-index: -99999;
+  position: absolute;
+  right: 0;
+  margin: 0;
+}
+
+.circle svg {
+  height: 45vw;
+  width: 45vw;
+}
+
+li {
+  display: inline;
+}
+
+.button {
+  color: antiquewhite;
+  font-weight: 700;
+  background-color: #e8594f;
+  border: 1px solid #d14a41;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #a9323e;
+  border: 1px solid hwb(354 20% 34%);
+  box-shadow: 0px 1.8px 2.5px rgba(169, 50, 62, 0.043),
+    0px 4.6px 6.4px rgba(169, 50, 62, 0.062),
+    0px 9.4px 13.1px rgba(169, 50, 62, 0.078),
+    0px 19.3px 27px rgba(169, 50, 62, 0.097),
+    0px 53px 74px rgba(169, 50, 62, 0.14);
+}
+
+@media screen and (max-width: 600px) {
+  .logo2 {
+    display: block;
+  }
+  .logo1 {
+    display: none;
+  }
+
+  .fronttxt h1 {
+    font-size: 2.8rem;
+  }
+
+  .fronttxt {
+    width: 100%;
+  }
+
+  .frontpage {
+    display: block;
+    width: 100%;
+    padding-right: 2rem;
+  }
+}
