@@ -29,3 +29,6 @@ app.use(router)
   app.listen(port, () => {
     console.log(`Init server ${port}`)
   })
+
+  //rotas 
+  //paginas
