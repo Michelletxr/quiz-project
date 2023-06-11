@@ -11,24 +11,10 @@ app.use(express.static("public"))
 
 //indica que está usando uma view engine
 app.set('view engine', 'ejs')
+app.set('views', "/home/michelle/Área de trabalho/web-1/web1-project/src/views" )
 //definindo rotas
 app.use(router)
-/*app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + "/src/web/pages/home.html"))
-  })
-
-  app.get('/question', (req, res) => {
-    res.sendFile(path.join(__dirname + "/src/web/pages/questions.html"))
-  })
-
-  app.get('/result', (req, res) => {
-    res.sendFile(path.join(__dirname + "/src/web/pages/result.html"))
-  })
-*/
 
   app.listen(port, () => {
     console.log(`Init server ${port}`)
   })
-
-  //rotas 
-  //paginas

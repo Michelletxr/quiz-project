@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CarangueQuiz</title>
+        <link rel="/styles/questions.css" href="stylesheet">
+        <script src="scripts/index.js" defer type="module"></script>
+    </head>
+        <body style="font-family:Arial, Helvetica, sans-serif;">
+            <div class="header">
+                <div class="logo">
+                    <img src="https://cdn.discordapp.com/attachments/719724566972465216/1102985797877125262/image.png" alt="Caranguejo" style="width:65px;height:65px;float:left;">
+                    <h1 style="float:left">CARANGUEQUIZ</h1>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#" style="color:black;">Caranguejos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="toptxt">
+                <h1 style="font-size:xx-large;font-style:italic;padding-bottom:15px;">Qual caranguejo você é?</h1>
+                <p style="color:gray;font-size:large;font-style:italic;text-align:left;">Ei sei que você sempre quis saber, essa é a hora da verdade!</p>
+            </div>
+                <div class="frontpage">
+                <div class="fronttxt" style="padding:15px;">
+                    <h1 style="font-size:xx-large;font-style:italic;padding-bottom:15px;border-bottom-style:solid;border-bottom-color:gray;"><%= question.title%></h1>
+                    <img src="https://www.besttime2travel.com/sites/default/files/styles/width_1000px/public/inline-images/Crabs%20Cuba-202.JPG?itok=u7Pqk54W" alt="Big_Caranguejo" style="width:auto;max-height:290px;"></div>
+                    <p style="color:gray;font-size:large;font-style:italic;text-align:center;"></p>
+                </div>
+            </div>
+            <div class= "questions" style="text-align:center;margin-top:50px">
+                <% question.alternatives.forEach((a) => { %>
+                    <button class="button"><%= a %></button>
+                <% })%>
+            </div>
+        </body>
+</html>

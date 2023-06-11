@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarangueQuiz</title>
     <link href="/styles/main.css" rel="stylesheet">
+    <script src="scripts/quizz.js" defer type="module"></script>
 </head>
 <body style="font-family:Arial, Helvetica, sans-serif;">
     <div class="header">
@@ -26,6 +27,6 @@
         <div class="frontimg"><img src="https://cdn.discordapp.com/attachments/719724566972465216/1103024642312114176/image.png" alt="Big_Caranguejo" style="width:600px;height:400px;background-size:contain;"></div>
     </div>
     <div style="text-align:center;margin-top:60px">
-        <button class="button">COMECE O QUIZ</button>
+        <button class="button" id="init-quizz" onclick="loadPag(event)">COMECE O QUIZ</button>
     </div>
 </body>
