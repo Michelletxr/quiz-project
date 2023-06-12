@@ -1,7 +1,11 @@
 import express from "express"
 import path from 'path';
 import {fileURLToPath} from 'url';
+import { dirname } from 'path';
 import router from './src/routers/routes.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express()
 const port = 3000
@@ -11,7 +15,7 @@ app.use(express.static("public"))
 
 //indica que está usando uma view engine
 app.set('view engine', 'ejs')
-app.set('views', "/home/michelle/Área de trabalho/web-1/web1-project/src/views" )
+app.set('views', path.join(__dirname, 'src/views') )
 //definindo rotas
 app.use(router)
 
