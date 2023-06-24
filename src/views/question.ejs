@@ -1,26 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CarangueQuiz</title>
-        <link rel="/styles/questions.css" href="stylesheet">
-        <script src="scripts/question.js" defer type="module">
-                const loadPag = (e) => {
-                    e.preventDefault();
-                    const index = "<%= question.index %>"
-                    fetch(`http://localhost:3000/update-question/${index}`, {
-                        method: 'GET',
-                        redirect:'follow'
-                    })
-                    .then(res => res.redirected && ( location.href = res.url ))
+        <link rel="stylesheet" href="/styles/style.css">
+        <script defer type="module">
+            console.log("current index", localStorage.getItem('index'))
+            
+            function updatePoints(idValue){
+                let currentPoints = localStorage.getItem('points');
+                currentPoints= parseInt(currentPoints) + parseInt(idValue);
+                localStorage.setItem('points', currentPoints);
+            }
+            
+            function updateIndexPage(){
+                let currentIndex = localStorage.getItem('index');
+                currentIndex= parseInt(currentIndex) + 1;
+                if(currentIndex <= 5){
+                    localStorage.setItem('index', currentIndex);
                 }
+            }
+           function loadPag(e){
+                e.preventDefault();
+                let idQuestion = e.target.id;
+                let index = '<%= question.id%>'
+                let url = ''
+                let indexPage = parseInt(index) + 1
+                let totalQuestions = 12
+                if(indexPage < totalQuestions){
+                    url = `http://localhost:3000/update-question/${indexPage}`
+                }else{
+                    let currentPoints = localStorage.getItem('points');
+                    url = `http://localhost:3000/redirect-points/${currentPoints}`
+                }
+                
+                 fetch(url, {
+                     method: 'GET',
+                     redirect:'follow'
+                 }).then(res => {
+                     if(res.status == 200){
+                        updatePoints(idQuestion);
+                        updateIndexPage();
+                     }
+                     res.redirected && ( location.href = res.url )
+                 }
+             )
+}
+            
+            const elements = document.getElementsByClassName('button')
+            for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    element.id = i;
+                    element.addEventListener('click', loadPag);
+                }
+
         </script>
     </head>
-        <body style="font-family:Arial, Helvetica, sans-serif;">
+        <body style=>
             <div class="header">
                 <div class="logo">
-                    <img src="https://cdn.discordapp.com/attachments/719724566972465216/1102985797877125262/image.png" alt="Caranguejo" style="width:65px;height:65px;float:left;">
-                    <h1 style="float:left">CARANGUEQUIZ</h1>
+                    <img class="logo2" src="img/logo2.svg" alt="Caranguejo">
+                    <img class="logo1" src="img/logo1.svg" alt="Caranguejo">
                 </div>
                 <div class="menu">
                     <ul>
@@ -31,20 +70,17 @@
             </div>
 
             <div class="toptxt">
-                <h1 style="font-size:xx-large;font-style:italic;padding-bottom:15px;">Qual caranguejo você é?</h1>
-                <p style="color:gray;font-size:large;font-style:italic;text-align:left;">Ei sei que você sempre quis saber, essa é a hora da verdade!</p>
+                <br><br><br>
+                <h1 style="font-size:xxx-large;font-style:italic;padding-bottom:15px;text-align:center;">Qual caranguejo você é?</h1>
+                <p style="color:rgba(28, 28, 28, 0.5);font-size:large;font-style:italic;text-align:center;">Eu sei que você sempre quis saber. Essa é a hora da verdade!</p>
             </div>
-                <div class="frontpage">
-                <div class="fronttxt" style="padding:15px;">
-                    <h1 style="font-size:xx-large;font-style:italic;padding-bottom:15px;border-bottom-style:solid;border-bottom-color:gray;"><%= question.title%></h1>
-                    <img src="https://www.besttime2travel.com/sites/default/files/styles/width_1000px/public/inline-images/Crabs%20Cuba-202.JPG?itok=u7Pqk54W" alt="Big_Caranguejo" style="width:auto;max-height:290px;"></div>
-                    <p style="color:gray;font-size:large;font-style:italic;text-align:center;"></p>
+            <div class="question">
+                <div>
+                    <h1 class="questionTitle"><%= question.title%></h1> <br>
+                    <img src="https://www.besttime2travel.com/sites/default/files/styles/width_1000px/public/inline-images/Crabs%20Cuba-202.JPG?itok=u7Pqk54W" alt="Big_Caranguejo" style="width:auto;max-height:290px;">
+                    <br><br>
+                    <% question.alternatives.forEach((a) => { %>
+                        <button class="button"><%= a %></button>
+                    <% })%>
                 </div>
-            </div>
-            <div class= "questions" style="text-align:center;margin-top:50px">
-                <% question.alternatives.forEach((a) => { %>
-                    <button class="button", onclick="loadPag(event)"><%= a %></button>
-                <% })%>
-            </div>
-        </body>
-</html>
+    </body>

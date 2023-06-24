@@ -1,7 +1,8 @@
 
 const loadPag = (e) => {
+    localStorage.setItem("index", 0)
     e.preventDefault();
-    fetch(`http://localhost:3000/update-question/0`, {
+    fetch(`http://localhost:3000/update-question/1`, {
         method: 'GET',
         redirect:'follow'
     })
@@ -9,7 +10,9 @@ const loadPag = (e) => {
 }
 
 
-
 document
     .getElementById('init-quizz')
     .addEventListener('click', loadPag)
+
+let points = 0
+localStorage.setItem('points', points)

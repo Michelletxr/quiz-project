@@ -1,34 +1,37 @@
 import questions from '../models/questions.js'
-import process from 'process';
-import path from 'path';
-
+import calculateResult from '../models/result.js'
 
 const controllerHome = (req, res) => {
-   // res.sendFile( path.join(process.cwd() + "/src/web/pages/home.html"))
    res.render('home')
 };
 
 const getQuestions = (req, res) => {
-    console.log(res)
     res.json(questions)
-}
+};
 
 const getQuestionById = (req, res) => {
     const {id} = req.params 
     const question = questions[id]
-   
-   /* if(id <= questions.length){
-        res.status(200).json(questions[id])
-    }else{
-        res.status(404).send("error: question not found")*/
-   // }
     res.render('question', {question})
-}
+};
 
 const updateQuestion = (req, res) => {
     const {id} = req.params 
-    //mudar para ficar dinamico
-    res.redirect(301,'/question/0')
+    if(parseInt(id)<questions.length){
+        res.redirect(301,`/question/${id}`) 
+    }
+};
+
+const redirectResult = (req, res) => {
+    const {totalPoints} = req.params
+    process.env.CURRENT_POINTS = totalPoints
+    res.redirect(`/result`)
 }
 
-export {controllerHome , getQuestions, getQuestionById, updateQuestion}
+const getResult = (req, res) =>{
+    const points = process.env.CURRENT_POINTS
+    let result = calculateResult(parseInt(points));
+    res.render('result', {result})
+};
+
+export {controllerHome , getQuestions, getQuestionById, updateQuestion, redirectResult, getResult}
