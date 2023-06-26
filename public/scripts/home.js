@@ -1,6 +1,6 @@
 
 const loadPag = (e) => {
-    localStorage.setItem("index", 0)
+    localStorage.setItem("index", 1)
     e.preventDefault();
     fetch(`http://localhost:3000/update-question/1`, {
         method: 'GET',

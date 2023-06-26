@@ -4,7 +4,7 @@
         <title>CarangueQuiz</title>
         <link rel="stylesheet" href="/styles/style.css">
         <script defer type="module">
-            console.log("current index", localStorage.getItem('index'))
+            //console.log("current index", localStorage.getItem('index'))
             
             function updatePoints(idValue){
                 let currentPoints = localStorage.getItem('points');
@@ -14,8 +14,8 @@
             
             function updateIndexPage(){
                 let currentIndex = localStorage.getItem('index');
-                currentIndex= parseInt(currentIndex) + 1;
-                if(currentIndex <= 5){
+                console.log(currentIndex)
+                if(currentIndex <= 12){
                     localStorage.setItem('index', currentIndex);
                 }
             }
@@ -24,7 +24,7 @@
                 let idQuestion = e.target.id;
                 let index = '<%= question.id%>'
                 let url = ''
-                let indexPage = parseInt(index) + 1
+                let indexPage = parseInt(index)
                 let totalQuestions = 12
                 if(indexPage < totalQuestions){
                     url = `http://localhost:3000/update-question/${indexPage}`

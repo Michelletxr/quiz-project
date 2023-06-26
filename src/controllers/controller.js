@@ -16,7 +16,7 @@ const getQuestionById = (req, res) => {
 };
 
 const updateQuestion = (req, res) => {
-    const {id} = req.params 
+    const {id} = req.params
     if(parseInt(id)<questions.length){
         res.redirect(301,`/question/${id}`) 
     }
